@@ -1,0 +1,35 @@
+.panel.panel-default
+  .panel-heading
+    .row
+      .pull-left.col-md-2
+        Article
+      .col-md-2
+        Comments
+      .col-md-2
+        Author
+      .col-md-2
+        Created At
+      .col-md-2
+        Actions
+      .col-md-2
+        .pull-right
+          - if can? :create, Article
+            = link_to 'New Article', new_article_path, class: "btn btn-info active", role: "button"
+  .panel-body
+    - @articles.each do |article|
+      %div.row.well-sm
+        %div.col-md-2
+          = link_to article.name, article_path(article)
+        %div.col-md-2
+          = article.comments.size
+        %div.col-md-2
+          = article.author_name
+        %div.col-md-2
+          = article.created_at.strftime('%b %d, %Y')
+        %div.col-md-2
+          %b
+            %a{"data-confirm" => "Are you sure?", "data-method" => "delete", href: "/articles/#{article.id}", "class" => "btn btn-danger active"} Destroy
+          %b= link_to 'Edit', edit_article_path(article), class: "btn btn-info active"
+        %div.col-md-2
+
+= paginate @articles, :theme => 'twitter-bootstrap-3'

@@ -1,0 +1,15 @@
+= form_for(@comment, :html => { :role => "form" }) do |f|
+  - if @comment.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@comment.errors.count, "error")
+        prohibited this comment from being saved:
+      %ul
+        - @comment.errors.full_messages.each do |msg|
+          %li= msg
+  .form-group
+    = f.label :content
+    = f.text_area :content, :rows => '10', :class => "form-control", :placeholder => "Add your comment"
+    = f.hidden_field :article_id
+  .actions
+    = f.submit "Submit", :class => "btn btn-danger"

@@ -1,0 +1,30 @@
+.panel.panel-default
+  .panel-heading
+    .panel-title
+      .row
+        .col-md-4
+          New Article
+        .col-md-8
+          .pull-right
+            = link_to 'Back', articles_path, class: "btn btn-info active"
+  .panel-body
+    = form_for(@article, :html => { :role => "form" }) do |f|
+      - if @article.errors.any?
+        #error_explanation
+          %h2
+            = pluralize(@article.errors.count, "error")
+            prohibited this article from being saved:
+          %ul
+            - @article.errors.full_messages.each do |msg|
+              %li= msg
+      .form-group
+        = f.label :name
+        = f.text_field :name, :class => "form-control", :placeholder => "Enter name"
+      .form-group
+        = f.label :content
+        = f.text_area :content, :rows => "15", :class => "form-control", :placeholder => "Enter content"
+      .form-group
+        = f.label :author_name
+        = f.text_field :author_name, :class => "form-control", :placeholder => "Enter author name"
+      .actions
+        = f.submit "Submit", :class => "btn btn-danger"
