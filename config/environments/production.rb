@@ -83,4 +83,15 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'sheltered-bastion-8535.herokuapp.com' }
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => 'sheltered-bastion-8535.herokuapp.com',
+    :user_name            => 'phaneendra1252@gmail.com',
+    :password             => 'phaneendra52',
+    :authentication       => 'plain',
+    :enable_starttls_auto => true  
+  }
+
 end
