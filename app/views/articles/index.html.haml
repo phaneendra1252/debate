@@ -27,9 +27,11 @@
         %div.col-md-2
           = article.created_at.strftime('%b %d, %Y')
         %div.col-md-2
-          %b
-            %a{"data-confirm" => "Are you sure?", "data-method" => "delete", href: "/articles/#{article.id}", "class" => "btn btn-danger active"} Destroy
-          %b= link_to 'Edit', edit_article_path(article), class: "btn btn-info active"
+          - if can? :destroy, article
+            %b
+              %a{"data-confirm" => "Are you sure?", "data-method" => "delete", href: "/articles/#{article.id}", "class" => "btn btn-danger active"} Destroy
+          - if can? :update, article
+            %b= link_to 'Edit', edit_article_path(article), class: "btn btn-info active"
         %div.col-md-2
 
 = paginate @articles, :theme => 'twitter-bootstrap-3'

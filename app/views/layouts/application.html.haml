@@ -11,6 +11,9 @@
     .row
       .col-md-10
         = render :partial => "layouts/flash_messages"
+        - if current_user.blank?
+          %h2.login_notice 
+            Please signin for posting your comments
         = yield
       .col-md-2
         = render :partial => "layouts/sidebar"

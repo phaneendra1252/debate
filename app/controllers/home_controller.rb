@@ -1,6 +1,9 @@
 class HomeController < ApplicationController
 
-  def index
+  def about_us
+  end
+
+  def contact_us
   end
 
 end

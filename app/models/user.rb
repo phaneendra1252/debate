@@ -10,7 +10,15 @@ class User < ActiveRecord::Base
 
   scope :with_role, lambda { |role| {:conditions => "roles_mask & #{2**ROLES.index(role.to_s)} > 0"} }
 
-  ROLES = %w[admin moderator author]
+  ROLES = %w[admin moderator]
+
+  validates :name, presence: true
+
+  before_save :capitalize_name
+
+  def capitalize_name
+    self.name = self.name.titleize
+  end
 
   def roles=(roles)
     self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum

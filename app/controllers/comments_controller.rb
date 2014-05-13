@@ -8,34 +8,32 @@ class CommentsController < BaseController
   end
 
   def edit
+    render :json => {:success => true, :partial => render_to_string(:partial => 'comments/form', :locals => { comment: @comment })}
   end
 
   def create
     @comment = Comment.new(comment_params)
     @comment.user = current_user
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to article_url(@comment.article_id), notice: 'Comment was successfully created.' }
-      else
-        format.html { render action: 'new' }
-      end
+    if @comment.save
+      render :json => {:success => true, :partial => render_to_string(:partial => 'comments/comments', :locals => { article: @comment.article })}
+    else
+      render :json => {:error_fields => @comment.errors, :error_message => @comment.errors.full_messages}, :status => 500
     end
   end
 
   def update
-    respond_to do |format|
-      if @comment.update(comment_params)
-        format.html { redirect_to article_url(@comment.article_id), notice: 'Comment was successfully updated.' }
-      else
-        format.html { render action: 'edit' }
-      end
+    if @comment.update(comment_params)
+      render :json => {:success => true, :partial => render_to_string(:partial => 'comments/comment', :locals => { comment: @comment })}
+    else
+      render :json => {:error_fields => @comment.errors, :error_message => @comment.errors.full_messages}, :status => 500
     end
   end
 
   def destroy
-    @comment.destroy
-    respond_to do |format|
-      format.html { redirect_to article_url(@comment.article_id), notice: 'Comment was successfully destroyed.'  }
+    if @comment.destroy
+      render :json => {:success => true, :partial => render_to_string(:partial => 'comments/comments', :locals => { article: @comment.article })}
+    else
+      render :json => {:error_fields => @comment.errors, :error_message => @comment.errors.full_messages}, :status => 500
     end
   end
 

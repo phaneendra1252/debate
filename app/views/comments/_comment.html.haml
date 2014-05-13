@@ -1,0 +1,17 @@
+.panel-heading
+  .row
+    .pull-left.col-md-8
+      %b= comment.user.name
+      @ #{comment.updated_at.strftime('%b %d, %Y %H:%M:%S')}
+      .destroy_errors.alert.alert-info.fade.in.hide
+    .col-md-4
+      .pull-right
+        %p
+          - if can? :update, comment
+            = link_to "Edit", edit_comment_path(comment), class: "btn btn-info edit_comment_data"
+          - if can? :destroy, comment
+            = link_to "Destroy", "/comments/#{comment.id}", class: "btn btn-danger destroy_comment"
+.panel-body
+  .row.well-sm
+    .col-md-12.comments_data
+      = simple_format comment.content

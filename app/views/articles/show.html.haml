@@ -1,4 +1,5 @@
-.panel.panel-default
+.testing
+.panel.panel-info
   .panel-heading
     .row
       .pull-left.col-md-8
@@ -19,22 +20,8 @@
       %div.col-md-12
         = simple_format @article.content
 
-- unless @article.comments.empty?
-  %h2= pluralize(@article.comments.size, 'comment')
-  - for comment in @article.comments
-    .row
-      .pull-left.col-md-8
-        %b= comment.user.name
-        @ #{comment.created_at.strftime('%b %d, %Y %H:%M')}
-      .col-md-4
-        .pull-right
-          %p
-            - if can? :update, comment
-              = link_to "Edit", edit_comment_path(comment), class: "btn btn-info"
-            - if can? :destroy, comment
-              %a{"data-confirm" => "Are you sure?", "data-method" => "delete", href: "/comments/#{comment.id}", "class" => "btn btn-danger"} Destroy
-    .row.well-sm
-      .col-md-12
-        = simple_format comment.content
+#comments 
+  = render 'comments/comments', {article: @article}
 
-= render :partial => 'comments/form'
+- if can? :create, Comment
+  = render :partial => 'comments/form', :locals => { comment: @comment} 

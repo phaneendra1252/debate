@@ -28,3 +28,12 @@ body {
 .panel-header {
   background-color: #DEEFFA;
 }
+
+.login_notice {
+  color: red;
+  text-align: center;
+}
+
+.error_field {
+  border: 2px solid #BCE8F1 !important;
+}

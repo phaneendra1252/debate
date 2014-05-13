@@ -1,0 +1,5 @@
+- unless article.comments.empty?
+  %h3= pluralize(article.comments.size, 'comment')
+  .panel.panel-default
+    - for comment in article.comments
+      = render "comments/comment", { comment: comment }
