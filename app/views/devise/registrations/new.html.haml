@@ -6,7 +6,6 @@
           Sign up
         .col-md-8
           .pull-right.active
-            = render "devise/shared/links"
   .panel-body
     = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
       = devise_error_messages!
@@ -26,12 +25,13 @@
         = f.label :password_confirmation
         %br
         = f.password_field :password_confirmation
-      .form-group
-        = f.label :roles
-        %br
-        - for role in User::ROLES
-          = check_box_tag "user[roles][]", role, f.object.roles.include?(role)
-          = f.label role.humanize
+      - if can? :create, User
+        .form-group
+          = f.label :roles
           %br
+          - for role in User::ROLES
+            = check_box_tag "user[roles][]", role, f.object.roles.include?(role)
+            = f.label role.humanize
+            %br
       .actions
         = f.submit "Sign up", :class => "btn btn-success"

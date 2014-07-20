@@ -1,16 +1,22 @@
 .panel.panel-default
   .panel-heading
     .row
-      .pull-left.col-md-10
+      .pull-left.col-md-8
         User
       .col-md-2
         Roles
+      .col-md-2
+        .pull-right
+          - if can? :create, User
+            = link_to 'New User', new_user_registration_path, class: "btn btn-info active", role: "button"
+
   .panel-body
     - @users.each do |user|
       .row.well-sm
-        .col-md-10
+        .col-md-8
           = user.name
         .col-md-2
           = user.roles.join(", ")
+        .col-md-2
 
 = paginate @users, :theme => 'twitter-bootstrap-3'

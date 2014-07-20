@@ -27,6 +27,9 @@
           %ul.dropdown-menu
             %li
               %a{href: "/users/edit"} Edit Account
+            - if can? :create, User
+              %li
+                = link_to "Create User", new_user_registration_path
             %li.divider
             %li
               = link_to :logout, destroy_user_session_path, :method => :delete
