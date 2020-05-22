@@ -27,4 +27,4 @@ Things you may want to cover:
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
 
-![Image description123](https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.fujifilm.com%2Fproducts%2Fdigital_cameras%2Fx%2Ffujifilm_x_t1%2Fsample_images%2Fimg%2Findex%2Fff_x_t1_001.JPG&imgrefurl=https%3A%2F%2Fwww.fujifilm.com%2Fproducts%2Fdigital_cameras%2Fx%2Ffujifilm_x_t1%2Fsample_images%2F&tbnid=gb07bi1LLyC5uM&vet=12ahUKEwi82u3OosjpAhUNg54KHaH6CUAQMygGegUIARD6AQ..i&docid=5j2efDObVXgfoM&w=4896&h=3264&q=sample%20image&ved=2ahUKEwi82u3OosjpAhUNg54KHaH6CUAQMygGegUIARD6AQ)
+![Image description123](https://imaging.nikon.com/lineup/dslr/df/img/sample/img_01.jpg)
