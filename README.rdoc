@@ -27,4 +27,4 @@ Things you may want to cover:
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
 
-![Image description123](https://imaging.nikon.com/lineup/dslr/df/img/sample/img_01.jpg)
+https://imaging.nikon.com/lineup/dslr/df/img/sample/img_01.jpg
